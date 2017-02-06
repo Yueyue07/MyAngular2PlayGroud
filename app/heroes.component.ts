@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Hero } from './hero';
 
 import { HeroService } from './hero.service';
@@ -72,10 +73,12 @@ export class HeroesComponent implements OnInit {
   heroes: Hero[];
   selectedHero: Hero;
 
-  constructor(private heroService: HeroService) {}
+  constructor(private heroService: HeroService, private route: ActivatedRoute) {}
   
   ngOnInit(): void {
     this.getHeroes();
+    var result = this.route.params;
+    console.log(result);
   }
 
   getHeroes(): void {
